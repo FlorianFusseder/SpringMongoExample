@@ -24,7 +24,8 @@ public class MongoConfig extends AbstractMongoConfiguration {
 //        ServerAddress serverAddress = new ServerAddress("http://mongodb-restmongo.192.168.99.100.nip.io/", 27017);
 //        MongoCredential mongoCredential = MongoCredential.createMongoCRCredential("Florian", getDatabaseName(), "time2go".toCharArray());
 //        return new MongoClient(serverAddress, Arrays.asList(mongoCredential));
-        return new MongoClient("http://mongodb-restmongo.192.168.99.100.nip.io");
+//        return new MongoClient("http://mongodb-restmongo.192.168.99.100.nip.io");
+        return new MongoClient("http://mongodb-project1.192.168.42.2.nip.io" ,27017);
 
     }
 }
