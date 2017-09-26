@@ -23,7 +23,7 @@ public class MongoConfig extends AbstractMongoConfiguration {
     public Mongo mongo() throws Exception {
 //        External
 //        ServerAddress serverAddress = new ServerAddress("mongodb-mongo.192.168.99.100.nip.io:31247");
-        ServerAddress serverAddress = new ServerAddress("172.30.112.167");
+        ServerAddress serverAddress = new ServerAddress("172.17.0.2");
         MongoCredential mongoCredential = MongoCredential.createScramSha1Credential("florian", getDatabaseName(), "time2go".toCharArray());
         return new MongoClient(serverAddress, Arrays.asList(mongoCredential));
     }
