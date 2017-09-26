@@ -21,10 +21,11 @@ public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
     public Mongo mongo() throws Exception {
-//        External
-//        ServerAddress serverAddress = new ServerAddress("mongodb-mongo.192.168.99.100.nip.io:31247");
-        ServerAddress serverAddress = new ServerAddress("172.17.0.2");
-        MongoCredential mongoCredential = MongoCredential.createScramSha1Credential("florian", getDatabaseName(), "time2go".toCharArray());
-        return new MongoClient(serverAddress, Arrays.asList(mongoCredential));
+//        ServerAddress serverAddress = new ServerAddress("http://mongodb-restmongo.192.168.99.100.nip.io/", 27017);
+//        MongoCredential mongoCredential = MongoCredential.createMongoCRCredential("Florian", getDatabaseName(), "time2go".toCharArray());
+//        return new MongoClient(serverAddress, Arrays.asList(mongoCredential));
+//        return new MongoClient("http://mongodb-restmongo.192.168.99.100.nip.io");
+        return new MongoClient();
+
     }
 }
