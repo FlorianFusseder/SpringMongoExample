@@ -3,10 +3,7 @@ package ff.test.restdemo.Pojo;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@RequiredArgsConstructor
+@Data
 public class Person {
     @Id
     private String id;
