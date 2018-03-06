@@ -1,0 +1,15 @@
+GET http://localhost:8080
+
+###
+
+GET http://localhost:8080/persons
+
+###
+
+GET http://localhost:8080/persons/search
+
+###
+
+GET http://localhost:8080/persons/search/findDistinctValues
+
+###

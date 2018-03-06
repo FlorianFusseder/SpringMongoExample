@@ -8,19 +8,20 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.io.IOException;
 
-public class DistinctPersonImpl implements DistinctPerson {
+public class PersonRepositoryImpl implements PersonRepositoryCustom {
+
+    private MongoTemplate mongoTemplate;
 
     @Autowired
-    public MongoTemplate mongoTemplate;
-
+    public PersonRepositoryImpl(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
     @Override
     public DistinctValues findDistinctValues() throws IOException {
 
-        Document document = mongoTemplate.executeCommand(" { distinct: \"person\", key: \"firstName\" }");
+        Document document = mongoTemplate.executeCommand("{ distinct: \"person\", key: \"firstName\" }");
         ObjectMapper objectMapper = new ObjectMapper();
-        System.out.println(document.toJson());
-
         return objectMapper.readValue(document.toJson(), DistinctValues.class);
     }
 }
