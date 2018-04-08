@@ -2,7 +2,11 @@ GET http://localhost:8080
 
 ###
 
-GET http://localhost:8080/persons
+GET http://localhost:8080/boys
+
+###
+
+GET http://localhost:8080/girls
 
 ###
 
