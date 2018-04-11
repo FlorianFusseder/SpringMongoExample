@@ -5,8 +5,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
 import uk.co.blackpepper.bowman.annotation.RemoteResource;
 
-@RemoteResource("/Boys" )
-@JsonTypeName("Boy")
+@RemoteResource("/" + IBoy.TYPE + "s")
+@JsonTypeName(IBoy.TYPE)
 public class Boy extends Person {
 
     private final String sex = "Boy";

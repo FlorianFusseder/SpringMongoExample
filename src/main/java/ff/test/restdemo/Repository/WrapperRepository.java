@@ -2,8 +2,13 @@ package ff.test.restdemo.Repository;
 
 import ff.test.restdemo.Pojo.Wrapper;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.List;
+
 @RepositoryRestResource
-public interface WrapperRepository extends CrudRepository<Wrapper, String> {
+public interface WrapperRepository extends CrudRepository<Wrapper, String>, CustomizedWrapperRepository {
+
+
 }

@@ -5,7 +5,9 @@ import ff.test.restdemo.Pojo.Person;
 import ff.test.restdemo.Pojo.Wrapper;
 import ff.test.restdemo.Repository.BoyRepository;
 import ff.test.restdemo.Repository.PersonRepository;
+import ff.test.restdemo.Repository.CustomizedWrapperRepository;
 import ff.test.restdemo.Repository.WrapperRepository;
+import ff.test.restdemo.TypeResolver.BnObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -63,15 +65,25 @@ public class RestdemoApplicationTests {
 
         wrapper.setPerson(boy1);
         wrapperRepository.save(wrapper);
+
+        Iterable<Wrapper> all = wrapperRepository.findAll();
+
+
+        System.out.println(all);
+
+
     }
     @Test
     public void bowmanRequestDataTest() {
 
         ClientFactory clientFactory = Configuration.builder()
-                .setBaseUri("http://localhost:8080").build()
+                .setBaseUri("http://localhost:8080")
+                .setObjectMapperConfigurer(new BnObjectMapper())
+                .build()
                 .buildClientFactory();
 
-        Client<Wrapper> wrapperClient = clientFactory.create(Wrapper.class);
+        Client<Wrapper> wrapperClient = clientFactory
+                .create(Wrapper.class);
 
         Iterable<Wrapper> all = wrapperClient.getAll();
 
