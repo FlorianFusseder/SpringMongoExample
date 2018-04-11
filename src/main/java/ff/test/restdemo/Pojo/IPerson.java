@@ -13,17 +13,6 @@ import java.net.URI;
 )
 public interface IPerson {
 
-    @ResourceId
-    URI getUri();
-
-    String getType();
-
-    String getId();
-
-    void setId(String id);
-
-    void setUri(URI uri);
-
     String getFirstName();
 
     void setFirstName(String firstName);

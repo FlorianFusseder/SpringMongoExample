@@ -12,7 +12,6 @@ public class Boy extends Person {
     private final String sex = "Boy";
     private int test = 5;
 
-
     @DBRef
     private Person bestFriend;
 
