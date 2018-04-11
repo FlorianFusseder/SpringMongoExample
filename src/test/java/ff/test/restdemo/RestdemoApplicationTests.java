@@ -65,6 +65,33 @@ public class RestdemoApplicationTests {
         wrapper.setPerson(boy1);
         testRepository.save(wrapper);
     }
+    @Test
+    public void bowmanRequestDataTest() {
+
+        ClientFactory clientFactory = Configuration.builder()
+                .setBaseUri("http://localhost:8080").build()
+                .buildClientFactory();
+
+        Client<Wrapper> wrapperClient = clientFactory.create(Wrapper.class);
+
+        Iterable<Wrapper> all = wrapperClient.getAll();
+
+        for (Wrapper wrapper : all) {
+            Boy person = (Boy) wrapper.getPerson();
+            System.out.println(wrapper.getPerson().getFirstName());
+            System.out.println(wrapper.getPerson().getLastName());
+            Boy bestFriend = (Boy) person.getBestFriend();
+            System.out.println(bestFriend.getFirstName());
+            System.out.println(bestFriend.getLastName());
+
+            System.out.println(bestFriend.getBestFriend().getFirstName());
+            System.out.println(bestFriend.getBestFriend().getLastName());
+        }
+
+
+    }
+
+
 
     @Test
     public void bowmanSendDataTest() {

@@ -8,7 +8,7 @@ import uk.co.blackpepper.bowman.annotation.ResourceId;
 
 import java.net.URI;
 
-@RemoteResource("/testClasses")
+@RemoteResource("/wrappers")
 public class Wrapper {
 
     @Id
