@@ -42,7 +42,6 @@ public class RestdemoApplicationTests {
 
         testRepository.deleteAll();
         boyRepository.deleteAll();
-        personRepository.deleteAll();
 
         Boy boy0 = new Boy();
         boy0.setFirstName("Matthias");

@@ -1,20 +1,11 @@
 package ff.test.restdemo.Pojo;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonTypeResolver;
 import org.springframework.data.annotation.Id;
-import uk.co.blackpepper.bowman.annotation.RemoteResource;
 import uk.co.blackpepper.bowman.annotation.ResourceId;
-import uk.co.blackpepper.bowman.annotation.ResourceTypeInfo;
 
 import java.net.URI;
 
-
-@RemoteResource("/persons")
-@ResourceTypeInfo(subtypes = {Boy.class, Girl.class})
-public abstract class Person {
+public abstract class Person implements IPerson {
 
 
     @Id

@@ -15,7 +15,7 @@ public class Wrapper {
     private String id;
 
     @DBRef
-    private Person person;
+    private IPerson person;
 
     private URI uri;
 
@@ -25,7 +25,7 @@ public class Wrapper {
     }
 
     @LinkedResource
-    public Person getPerson() {
+    public IPerson getPerson() {
         return person;
     }
 
@@ -37,7 +37,7 @@ public class Wrapper {
         this.id = id;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(IPerson person) {
         this.person = person;
     }
 
