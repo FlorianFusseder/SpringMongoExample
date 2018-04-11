@@ -1,7 +1,9 @@
 package ff.test.restdemo.Repository;
 
-import ff.test.restdemo.Pojo.TestClass;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import ff.test.restdemo.Pojo.Wrapper;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-public interface TestRepository extends MongoRepository<TestClass, String> {
+@RepositoryRestResource
+public interface TestRepository extends CrudRepository<Wrapper, String> {
 }
