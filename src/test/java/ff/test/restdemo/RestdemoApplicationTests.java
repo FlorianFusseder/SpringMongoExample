@@ -5,7 +5,7 @@ import ff.test.restdemo.Pojo.Person;
 import ff.test.restdemo.Pojo.Wrapper;
 import ff.test.restdemo.Repository.BoyRepository;
 import ff.test.restdemo.Repository.PersonRepository;
-import ff.test.restdemo.Repository.TestRepository;
+import ff.test.restdemo.Repository.WrapperRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +23,7 @@ import java.net.URI;
 public class RestdemoApplicationTests {
 
     @Autowired
-    TestRepository testRepository;
+    WrapperRepository wrapperRepository;
 
     @Autowired
     BoyRepository boyRepository;
@@ -40,7 +40,7 @@ public class RestdemoApplicationTests {
     @Test
     public void saveToMongoDBTest() {
 
-        testRepository.deleteAll();
+        wrapperRepository.deleteAll();
         boyRepository.deleteAll();
 
         Boy boy0 = new Boy();
@@ -62,7 +62,7 @@ public class RestdemoApplicationTests {
         boyRepository.save(boy0);
 
         wrapper.setPerson(boy1);
-        testRepository.save(wrapper);
+        wrapperRepository.save(wrapper);
     }
     @Test
     public void bowmanRequestDataTest() {
@@ -95,7 +95,7 @@ public class RestdemoApplicationTests {
     @Test
     public void bowmanSendDataTest() {
 
-        testRepository.deleteAll();
+        wrapperRepository.deleteAll();
         boyRepository.deleteAll();
         personRepository.deleteAll();
 

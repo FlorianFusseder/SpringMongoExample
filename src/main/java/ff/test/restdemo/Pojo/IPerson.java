@@ -1,11 +1,16 @@
 package ff.test.restdemo.Pojo;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import uk.co.blackpepper.bowman.annotation.ResourceId;
-import uk.co.blackpepper.bowman.annotation.ResourceTypeInfo;
 
 import java.net.URI;
 
-@ResourceTypeInfo(subtypes = {Boy.class, Girl.class})
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Boy.class, name = "Boy"),
+        @JsonSubTypes.Type(value = Girl.class, name = "Girl")}
+)
 public interface IPerson {
 
     @ResourceId

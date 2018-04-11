@@ -1,14 +1,17 @@
 package ff.test.restdemo.Pojo;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
 import uk.co.blackpepper.bowman.annotation.RemoteResource;
 
-@RemoteResource("/boys")
+@RemoteResource("/Boys" )
+@JsonTypeName("Boy")
 public class Boy extends Person {
 
-    private final String sex = "b";
+    private final String sex = "Boy";
     private int test = 5;
+
 
     @DBRef
     private Person bestFriend;

@@ -1,11 +1,13 @@
 package ff.test.restdemo.Pojo;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import uk.co.blackpepper.bowman.annotation.RemoteResource;
 
-@RemoteResource("/girls")
+@RemoteResource("/Girls")
+@JsonTypeName("Girl")
 public class Girl extends Person {
 
-    private final String sex = "g";
+    private final String sex = "Girl";
 
     @Override
     public String getType() {
