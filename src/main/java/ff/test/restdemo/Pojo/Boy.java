@@ -13,7 +13,7 @@ public class Boy extends Person {
 
     private final String sex = "b";
     private int test = 5;
-    @DBRef
+    @DBRef(lazy = true)
     private List<Person> friends;
 
     @Override

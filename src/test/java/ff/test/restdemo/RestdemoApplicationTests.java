@@ -16,8 +16,6 @@ import uk.co.blackpepper.bowman.Client;
 import uk.co.blackpepper.bowman.ClientFactory;
 import uk.co.blackpepper.bowman.Configuration;
 
-import java.util.Collections;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RestdemoApplicationTests {
@@ -35,13 +33,12 @@ public class RestdemoApplicationTests {
     public void init() {
 
         testRepository.deleteAll();
+        personRepository.deleteAll();
         boyRepository.deleteAll();
 
         Boy boy0 = new Boy();
         boy0.setFirstName("Matthias");
         boy0.setLastName("Buchwald");
-
-        personRepository.save(boy0);
         boyRepository.save(boy0);
 
 
@@ -49,10 +46,10 @@ public class RestdemoApplicationTests {
         boy1.setFirstName("Florian");
         boy1.setLastName("Fusseder");
         boy1.setFriends(Lists.newArrayList(boy0));
-        TestClass testClass = new TestClass();
-
-        personRepository.save(boy1);
         boyRepository.save(boy1);
+
+
+        TestClass testClass = new TestClass();
         testClass.setPerson(boy1);
         testRepository.save(testClass);
 
@@ -63,7 +60,8 @@ public class RestdemoApplicationTests {
     public void BowmanTest() {
 
         ClientFactory clientFactory = Configuration.builder()
-                .setBaseUri("http://localhost:8080").build()
+                .setBaseUri("http://localhost:8080")
+                .build()
                 .buildClientFactory();
 
 
@@ -78,7 +76,8 @@ public class RestdemoApplicationTests {
             System.out.println(testClass.getPerson().getLastName());
 
             for (Person person1 : person.getFriends()) {
-                System.out.println(person1);
+                System.out.println(person1.getLastName());
+                System.out.println(person1.getFirstName());
             }
 
         }
