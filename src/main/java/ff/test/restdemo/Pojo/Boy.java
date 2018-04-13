@@ -1,9 +1,13 @@
 package ff.test.restdemo.Pojo;
 
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
 import uk.co.blackpepper.bowman.annotation.RemoteResource;
 
+import java.util.List;
+
+@Data
 @RemoteResource("/boys")
 public class Boy extends Person {
 
