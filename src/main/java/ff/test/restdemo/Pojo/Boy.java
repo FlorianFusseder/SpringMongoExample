@@ -34,6 +34,13 @@ public class Boy extends Person {
         this.test = test;
     }
 
+    public int getSet(int a) {
+        if (this.getBestFriend() != null) {
+            return a;
+        }
+        return 0;
+    }
+
     @Override
     public String getType() {
         return sex;

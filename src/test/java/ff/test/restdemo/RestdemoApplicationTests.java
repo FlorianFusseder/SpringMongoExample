@@ -78,6 +78,9 @@ public class RestdemoApplicationTests {
 
         for (Wrapper wrapper : all) {
             Boy person = (Boy) wrapper.getPerson();
+            int set = person.getSet(6);
+            System.out.println(set);
+
             System.out.println(wrapper.getPerson().getFirstName());
             System.out.println(wrapper.getPerson().getLastName());
             Boy bestFriend = (Boy) person.getBestFriend();
