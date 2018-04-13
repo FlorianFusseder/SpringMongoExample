@@ -19,6 +19,9 @@ public class Wrapper {
 
     private URI uri;
 
+    public Wrapper() {
+    }
+
     @ResourceId
     public URI getUri() {
         return uri;

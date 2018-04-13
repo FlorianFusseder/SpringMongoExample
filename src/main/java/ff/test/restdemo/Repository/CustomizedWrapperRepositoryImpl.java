@@ -1,13 +1,12 @@
 package ff.test.restdemo.Repository;
 
-import ff.test.restdemo.Pojo.Boy;
-import ff.test.restdemo.Pojo.IPerson;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import ff.test.restdemo.Pojo.Wrapper;
-import ff.test.restdemo.Pojo.Wrapper2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-
-import java.util.List;
 
 public class CustomizedWrapperRepositoryImpl implements CustomizedWrapperRepository {
 
@@ -20,16 +19,21 @@ public class CustomizedWrapperRepositoryImpl implements CustomizedWrapperReposit
     }
 
     @Override
-    public Wrapper2 getCompleteWrapper() {
+    public Object getCompleteWrapperJackson() {
+
 
         Wrapper object = mongoTemplate.findAll(Wrapper.class).get(0);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        Wrapper2 wrapper2 = new Wrapper2();
+        ObjectWriter objectWriter = objectMapper.writerFor(Wrapper.class);
 
-        Boy person = (Boy) object.getPerson();
-        person.setBestFriend(null);
-        wrapper2.setPerson(person);
+        try {
+            return objectWriter.writeValueAsString(object);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
 
-        return wrapper2;
+        return "Fail";
     }
 }

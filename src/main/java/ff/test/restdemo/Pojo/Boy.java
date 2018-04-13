@@ -1,22 +1,23 @@
 package ff.test.restdemo.Pojo;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.*;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
 import uk.co.blackpepper.bowman.annotation.RemoteResource;
 
 @RemoteResource("/" + IBoy.TYPE + "s")
 @JsonTypeName(IBoy.TYPE)
-public class Boy extends Person {
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = prop.prop)
+public class Boy extends Person implements IBoy {
 
     private final String sex = "Boy";
     private int test = 5;
 
     @DBRef
-    private Person bestFriend;
+    private IPerson bestFriend;
 
     @LinkedResource
-    public Person getBestFriend() {
+    public IPerson getBestFriend() {
         return bestFriend;
     }
 
@@ -38,6 +39,6 @@ public class Boy extends Person {
 
     @Override
     public String getType() {
-        return sex;
+        return IBoy.TYPE;
     }
 }
