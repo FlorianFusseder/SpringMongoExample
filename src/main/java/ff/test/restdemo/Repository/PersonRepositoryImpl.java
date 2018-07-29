@@ -1,7 +1,7 @@
 package ff.test.restdemo.Repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ff.test.restdemo.Pojo.DistinctValues;
+import ff.test.restdemo.pojo.DistinctValues;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

@@ -1,4 +1,4 @@
-package ff.test.restdemo.Pojo;
+package ff.test.restdemo.pojo;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
