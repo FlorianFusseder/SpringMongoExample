@@ -1,8 +1,8 @@
 package ff.test.restdemo;
 
-import ff.test.restdemo.Pojo.DistinctValues;
-import ff.test.restdemo.Pojo.Person;
 import ff.test.restdemo.Repository.PersonRepository;
+import ff.test.restdemo.pojo.DistinctValues;
+import ff.test.restdemo.pojo.Person;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,8 +14,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.IOException;
 import java.util.Arrays;
 
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class RestdemoApplicationTests {
 
     @Autowired
@@ -34,14 +38,13 @@ public class RestdemoApplicationTests {
         Person person5 = new Person("Matthias", "Sommer");
 
         personRepository.saveAll(Arrays.asList(person, person1, person2, person3, person4, person5));
-        Assert.assertEquals(6, personRepository.findAll().size());
+        assertThat(personRepository.findAll(), hasSize(6));
     }
 
     @Test
     public void DistinctNamesTest() throws IOException {
         DistinctValues distinctValues = personRepository.findDistinctValues();
-        Assert.assertEquals(1.0, distinctValues.getOk(), 0.00f);
-        Assert.assertEquals(4, distinctValues.getValues().size());
+        assertThat(distinctValues.getOk(), is(1.0f));
+        assertThat(distinctValues.getValues(), hasSize(4));
     }
-
 }
